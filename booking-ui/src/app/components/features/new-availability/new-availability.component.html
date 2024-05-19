@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Dodaj novu dostupnost za apartman:</h2>
+<mat-dialog-content>
+  <app-accommondation-card
+    [accommondation]="accommodation"
+  ></app-accommondation-card>
+  <form [formGroup]="newAvailabilityForm">
+    <mat-form-field >
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            placeholder="Start date"
+            [value]="startDate"
+          />
+          <input
+            matEndDate
+            placeholder="End date"
+            [value]="endDate"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cena</mat-label>
+      <input matInput formControlName="price" />
+    </mat-form-field>
+        <mat-label> Cena po osobi / Cena po danu</mat-label>
+        <mat-slide-toggle formControlName="isPriceForPerson"></mat-slide-toggle>
+    
+        <mat-label> Potvrdi automatski</mat-label>
+        <mat-slide-toggle formControlName="autoConfirm"></mat-slide-toggle>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button (click)="onNoClick()" [mat-dialog-close]="true">
+    Otkaži
+  </button>
+  <button mat-raised-button color="primary" (click)="createNewAvailability()">
+    Dodaj novu dostupnost 
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-content class="card">
+    <div class="info">
+      <span>Korisnik:</span>
+      <h2>{{ rate.reviewerUsername }}</h2>
+    </div>
+    <div class="info">
+      <span>Ocena za:</span>
+      <h2>{{ rate.reviewedName }}</h2>
+      
+    </div>
+    <div>
+        <app-star-rating [rating]="rate.grade"></app-star-rating>
+    </div>
+    <div class="buttons">
+        <button mat-raised-button style="color:red" >
+            Obriši ocenu
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+  </mat-card-content>
+</mat-card>

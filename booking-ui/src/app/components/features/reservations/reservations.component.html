@@ -1,0 +1,6 @@
+<h2>Rezervacije</h2>
+<div class="reservation-list">
+    @for (reservation of reservations; track $index) {
+        <app-reservation-card [reservation]="reservation" class="card"></app-reservation-card>
+    }
+</div>

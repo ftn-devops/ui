@@ -1,0 +1,8 @@
+<div>
+    <h2>Ocene</h2>
+    <div class="ratings">
+        @for(rate of ratings; track $index){
+            <app-rate-card [rate]="rate" class="card"></app-rate-card>
+        }
+    </div>
+</div>
