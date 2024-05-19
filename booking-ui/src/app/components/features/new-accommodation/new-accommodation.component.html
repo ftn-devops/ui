@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Dodaj novi apartman</h2>
+<mat-dialog-content>
+  <form [formGroup]="newAccommondationForm" >
+    <mat-form-field>
+      <mat-label>Naziv</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Adresa</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Opis</mat-label>
+      <input matInput formControlName="description" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Min broj osoba</mat-label>
+      <input matInput formControlName="minGuestNumber" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Max broj osoba</mat-label>
+      <input matInput formControlName="maxGuestNumber" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button (click)="onNoClick()" 
+  [mat-dialog-close]="true">Otkaži</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="createNewAccommondation()"
+  >
+    Dodaj novi apartman
+  </button>
+</mat-dialog-actions>

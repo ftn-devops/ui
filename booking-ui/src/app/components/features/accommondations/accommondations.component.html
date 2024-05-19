@@ -1,0 +1,12 @@
+<div>
+    <h2>Moji apartmani</h2>
+    <div class="accommondations-list">
+        @for (acc of accommondations; track $index) {
+            <app-accommondation-card [accommondation]="acc" [showActions]="true" class="card" (addNewAvailability)="addNewAvailability($event)"></app-accommondation-card>
+        }
+        <button mat-raised-button color="accent" (click)="addNewAccommondation()">
+            <mat-icon>add</mat-icon>
+            Dodaj Novi Apartman
+        </button>
+    </div>
+</div>

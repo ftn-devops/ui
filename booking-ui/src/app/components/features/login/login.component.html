@@ -1,0 +1,48 @@
+<div class="login-page">
+  <div class="login-img">
+    <img src="assets/login-bg.png" />
+  </div>
+  <div class="login-form-div">
+    <div class="form-container">
+      <form
+        class="form-signin login-form"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <h3 class="txt-color-mg">Uloguj se</h3>
+        <div class="inputs">
+            
+        <button mat-flat-button (click)="openRegistrationPage()">
+            Novi korisnik? Registruj se
+          </button>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              id="inputEmail"
+              class="form-control"
+              placeholder="Email address"
+              formControlName="email"
+              required
+              autofocus
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              id="inputPassword"
+              class="form-control"
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Log in</button>
+      </form>
+    </div>
+  </div>
+</div>

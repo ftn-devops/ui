@@ -1,0 +1,51 @@
+<div>
+  <div class="search-box">
+    <form [formGroup]="searchForm">
+      <div class="search-inputs">
+        <mat-form-field>
+          <mat-label>Adresa</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              placeholder="Start date"
+              [value]="startDate"
+            />
+            <input
+              matEndDate
+              placeholder="End date"
+              [value]="endDate"
+            />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Broj gostiju</mat-label>
+          <input matInput type="number" min="1" formControlName="guestNumber" />
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" (click)="search()">
+          Search <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="search-results">
+    <app-accommondation-card
+      *ngFor="let acc of availabilities"
+      [availability]="acc"
+      [showActions]="true"
+      [isForAvailability]="true"
+      class="card"
+      (reserveOffer)="reserveOffer($event)"
+    ></app-accommondation-card>
+  </div>
+</div>

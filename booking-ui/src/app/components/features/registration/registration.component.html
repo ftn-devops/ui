@@ -1,0 +1,141 @@
+<div class="login-page">
+  <div class="login-img">
+    <img src="assets/login-bg.png" />
+  </div>
+  <div class="login-form-div">
+      <div class="form-container">
+          <form
+          [formGroup]="registrationForm"
+          (ngSubmit)="onSubmit()"
+          class="form-signin login-form"
+          >
+          <h2>Registracija</h2>
+          <button mat-flat-button (click)="openLoginPage()">Imas nalog?</button>
+          <mat-form-field>
+            <mat-label for="inputEmail" class="sr-only">Email:</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              type="email"
+              id="inputEmail"
+              class="form-control"
+              required
+            />
+            <div
+              *ngIf="
+                registrationForm.get('email')?.invalid &&
+                (registrationForm.get('email')?.dirty ||
+                  registrationForm.get('email')?.touched)
+              "
+            >
+              <div
+                *ngIf="registrationForm.get('email')?.errors?.['email']"
+                class="txt-error"
+              >
+                Email must be a valid email address.
+              </div>
+            </div>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="password" class="sr-only">Password:</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              id="password"
+              class="form-control"
+              minlength="8"
+              required
+            />
+            <div
+              *ngIf="
+                registrationForm.get('password')?.invalid &&
+                (registrationForm.get('password')?.dirty ||
+                  registrationForm.get('password')?.touched)
+              "
+            >
+              <div
+                *ngIf="registrationForm.get('password')?.errors?.['required']"
+                class="txt-error"
+              >
+                Password is required.
+              </div>
+              <div
+                *ngIf="registrationForm.get('password')?.errors?.['minlength']"
+                class="txt-error"
+              >
+                Password must be at least 8 characters long.
+              </div>
+            </div>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="confirmPassword" class="sr-only"
+              >Confirm Password:</mat-label
+            >
+            <input
+              matInput
+              formControlName="confirmPassword"
+              type="password"
+              id="confirmPassword"
+              class="form-control"
+              minlength="8"
+              required
+            />
+            <div
+              *ngIf="
+                registrationForm.get('confirmPassword')?.invalid &&
+                (registrationForm.get('confirmPassword')?.dirty ||
+                  registrationForm.get('confirmPassword')?.touched)
+              "
+            >
+              <div
+                *ngIf="registrationForm.get('confirmPassword')?.errors?.['minlength']"
+                class="txt-error"
+              >
+                Confirm Password must be at least 8 characters long.
+              </div>
+              <div
+                *ngIf="registrationForm.get('confirmPassword')?.errors?.['matchingPasswords']"
+                class="txt-error"
+              >
+                Passwords do not match.
+              </div>
+            </div>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="firstName" class="sr-only">First Name:</mat-label>
+            <input
+              matInput
+              formControlName="firstName"
+              type="text"
+              id="firstName"
+              class="form-control"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="lastName" class="sr-only">Last Name:</mat-label>
+            <input
+              matInput
+              formControlName="lastName"
+              type="text"
+              id="lastName"
+              class="form-control"
+              required
+            />
+          </mat-form-field>
+        
+          <button
+            mat-raised-button
+            [disabled]="registrationForm.invalid"
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+
+
+    </div>
+  </div>
+</div>
+
