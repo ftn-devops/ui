@@ -1,15 +1,16 @@
-.profile-page{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 95vh;
+.profile-page {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
 }
 
-.headline{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+.headline {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .login-form {
   display: flex;

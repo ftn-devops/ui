@@ -3,7 +3,7 @@ import { Rate } from './rate';
 import { Reservation } from './reservation';
 
 export interface User {
-    id:string;
+  id: string;
   name: string;
   lastName: string;
   username: string;
@@ -14,11 +14,20 @@ export interface User {
 
   reservations: Reservation[];
   accommondations: Accommondation[];
+  notifications : NotificationType[];
 
-  rates : Rate[];
+  rates: Rate[];
 }
 
 export enum UserRole {
-  GUEST,
-  HOST,
+  GUEST='GUEST',
+  HOST='HOST',
+}
+
+export enum NotificationType {
+  ReservationRequest='ReservationRequest',
+  ReservationCanceled='ReservationCanceled',
+  GradeForMe='GradeForMe',
+  GradeForAccommondation='GradeForAccommondation',  
+  ReservationApproved='ReservationApproved',//User 
 }
