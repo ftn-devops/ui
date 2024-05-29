@@ -10,21 +10,29 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { UserService } from '../../../service/user/user.service';
-import { User } from '../../../model/user';
+import { NotificationType, User } from '../../../model/user';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatIconModule,MatButtonModule,MatInputModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSlideToggleModule
+  ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-
-  user! : User;
+  user!: User;
   registrationForm: FormGroup = new FormGroup({});
+  allNotificationTypes = NotificationType;
 
   constructor(
     private fb: FormBuilder,
@@ -45,16 +53,24 @@ export class ProfileComponent implements OnInit {
       .get('confirmPassword')
       ?.setValidators(this.matchingPasswords.bind(this));
 
-    this.userService.loggedUser$.subscribe(
-      data =>{
-        this.user = data!;
-        this.registrationForm.get("email")?.setValue(data?.email);
-        this.registrationForm.get("firstName")?.setValue(data?.name);
-        this.registrationForm.get("lastName")?.setValue(data?.lastName);
-      }
-    )
+    this.userService.loggedUser$.subscribe((data) => {
+      this.user = data!;
+      this.registrationForm.get('email')?.setValue(data?.email);
+      this.registrationForm.get('firstName')?.setValue(data?.name);
+      this.registrationForm.get('lastName')?.setValue(data?.lastName);
+    });
+
+
   }
 
+  togleNotification(checked:boolean,notificationType:NotificationType ){
+    if(checked && !this.user.notifications.includes(notificationType)){
+      this.user.notifications.push(notificationType);
+    }else if(!checked && this.user.notifications.includes(notificationType)) {
+      this.user.notifications = this.user.notifications.filter(x => x != notificationType);
+    }
+  }
+  
   onSubmit() {
     console.log(this.registrationForm.value);
   }
