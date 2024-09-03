@@ -6,14 +6,14 @@
         </div>
         <div class="info">
             @if (isForAvailability) {
-                <h3>{{availability.accommondation.name}}</h3>
-                <span>{{availability.accommondation.address}}</span>
+                <h3>{{availability.accommodation.name}}</h3>
+                <span>{{availability.accommodation.address}}</span>
                 
-                <span>{{availability.accommondation.description}}</span>
-                <span>min {{availability.accommondation.minGuestNumber}} <mat-icon>person</mat-icon></span>
-                <span>max {{availability.accommondation.maxGuestNumber}} <mat-icon>person</mat-icon></span>
+                <span>{{availability.accommodation.description}}</span>
+                <span>min {{availability.accommodation.minGuestNumber}} <mat-icon>person</mat-icon></span>
+                <span>max {{availability.accommodation.maxGuestNumber}} <mat-icon>person</mat-icon></span>
         
-                <span>{{availability.accommondation.avgRate}} <mat-icon>star</mat-icon></span>
+                <span>{{availability.accommodation.avgRate}} <mat-icon>star</mat-icon></span>
             }
             @else {
                 <h3>{{accommondation.name}}</h3>
