@@ -56,11 +56,11 @@
             
         }
         @if (reservation.reservationStatus === reservationsStatuses.FINISHED) {
-            <button mat-raised-button (click)="cancelReservation()">
+            <button mat-raised-button (click)="rateHost()">
                 <mat-icon>star</mat-icon>
                 Oceni domacina
             </button>
-            <button mat-raised-button (click)="cancelReservation()">
+            <button mat-raised-button (click)="rateAccommodation()">
                 <mat-icon>star</mat-icon>
                 Oceni apartman
             </button>

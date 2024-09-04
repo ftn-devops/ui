@@ -14,11 +14,16 @@ import { ReservationCardComponent } from '../../shared/reservation-card/reservat
 export class ReservationsComponent {
   reservations: Reservation[] = [];
 
+  userId: string = "";
+
   constructor(
     private reservationService: ReservationService,
     private userService: UserService
   ) {
     this.userService.loggedUser$.subscribe((data) => {
+      if(data != undefined){
+        this.userId = data!.id;
+      }
       this.updateReservations(data?.id!);
     });
   }
