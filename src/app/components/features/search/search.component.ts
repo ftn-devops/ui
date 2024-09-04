@@ -38,6 +38,8 @@ export class SearchComponent {
   endDate = new Date();
 
   searchForm = new FormGroup({
+    startDate : new FormControl(new Date()),
+    endDate : new FormControl(new Date()),
     address: new FormControl(''),
     guestNumber: new FormControl(2),
   });
@@ -53,8 +55,8 @@ export class SearchComponent {
       this.accommondationService
         .search(
           this.searchForm.get('address')?.value!,
-          this.startDate,
-          this.endDate,
+          this.searchForm.get('startDate')?.value!,
+          this.searchForm.get('endDate')?.value!,
           this.searchForm.get('guestNumber')?.value!
         )
         .subscribe((data) => {

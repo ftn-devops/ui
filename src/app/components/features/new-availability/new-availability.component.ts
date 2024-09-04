@@ -53,6 +53,8 @@ export class NewAvailabilityComponent {
     this.accommodation= data;
     console.log(this.accommodation);
     this.newAvailabilityForm = this.fb.group({
+      startDate : new FormControl(new Date()),
+      endDate : new FormControl(new Date()),
       price: new FormControl(100, Validators.required),
       isPriceForPerson: new FormControl(false, Validators.required),
       autoConfirm: new FormControl(false, Validators.required),
@@ -64,10 +66,10 @@ export class NewAvailabilityComponent {
   }
   createNewAvailability() {
     let newAvailability: Availability = {
-      accommondationId: this.accommodation.id,
-      accommondation: this.accommodation,
-      startDate: this.startDate,
-      endDate: this.endDate,
+      accommodationId: this.accommodation.id,
+      accommodation: this.accommodation,
+      startDate: this.newAvailabilityForm.get('startDate')!.value!,
+      endDate: this.newAvailabilityForm.get('endDate')!.value!,
       price: this.newAvailabilityForm.get('price')!.value!,
       isPriceForPerson:
         this.newAvailabilityForm.get('isPriceForPerson')!.value!,

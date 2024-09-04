@@ -4,8 +4,8 @@
     export interface Reservation {
     userId: string;
     user:User;
-    accommondationId: string;
-    accommondation:Accommondation;
+    accommodationId: string;
+    accommodation:Accommondation;
     startDate: Date;
     endDate: Date;
     price: number;

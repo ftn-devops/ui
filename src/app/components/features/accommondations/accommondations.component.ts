@@ -18,7 +18,7 @@ import { NewAvailabilityComponent } from '../new-availability/new-availability.c
 })
 export class AccommondationsComponent {
   accommondations: Accommondation[] = [];
-
+  userId:string = "";
   constructor(
     private userService: UserService,
     private accommondationService: AccommondationService,
@@ -29,10 +29,16 @@ export class AccommondationsComponent {
       this.accommondations = data;
     });
     this.userService.loggedUser$.subscribe((data) => {
-      if (data != null)
-        accommondationService.getAccomondations(data.id).subscribe((data) => {
-          this.accommondations = data;
-        });
+      if (data != null){
+        this.userId = data.id;
+        this.updateAccommodations();
+      }
+    });
+  }
+
+  updateAccommodations(){
+    this.accommondationService.getAccomondations(this.userId).subscribe((data) => {
+      this.accommondations = data;
     });
   }
 
@@ -40,6 +46,8 @@ export class AccommondationsComponent {
     const dialogRef = this.dialog.open(NewAccommodationComponent, {
       data: {
       },
+    }).afterClosed().subscribe(()=>{
+      this.updateAccommodations();
     });
   }
 
