@@ -45,8 +45,8 @@ describe('AccommondationCardComponent', () => {
       rates: [],
     };
     component.availability = {
-      accommondationId: '123',
-      accommondation: {
+      accommodationId: '123',
+      accommodation: {
         id: '123',
         hostId: '456',
         name: 'Sample Accommodation',

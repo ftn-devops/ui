@@ -49,8 +49,8 @@ describe('ReservationCardComponent', () => {
         notifications: [],
         rates: []
       },
-      accommondationId: "123",
-      accommondation: {
+      accommodationId: "123",
+      accommodation: {
         id: '123',
         hostId: '456',
         name: 'Sample Accommodation',

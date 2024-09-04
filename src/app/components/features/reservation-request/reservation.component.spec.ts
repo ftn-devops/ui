@@ -31,8 +31,8 @@ describe('ReservationComponent', () => {
         useValue: {}
       }, { provide: MAT_DIALOG_DATA, useValue: {
         availability: {
-          accommondationId: '1',
-          accommondation: {
+          accommodationId: '1',
+          accommodation: {
             id: "1",
             hostId: 'test',
             name: 'test',
