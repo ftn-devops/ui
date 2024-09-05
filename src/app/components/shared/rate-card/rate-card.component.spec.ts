@@ -32,12 +32,14 @@ describe('RateCardComponent', () => {
     fixture = TestBed.createComponent(RateCardComponent);
     component = fixture.componentInstance;
     component.rate = {
+      id:12,
       reviewerId: "123",
       reviewerUsername: "johndoe",
       reviewedId: "456",
       reviewedName: "Sample Accommodation",
       grade: 5,
-      date: new Date()
+      date: new Date(),
+      isForAccommodation: true
     };
   });
 
