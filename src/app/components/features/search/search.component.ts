@@ -71,8 +71,8 @@ export class SearchComponent {
     const dialogRef = this.dialog.open(ReservationComponent, {
       data: {
         availability: availability,
-        startDate: this.startDate,
-        endDate: this.endDate,
+        startDate: this.searchForm.get('startDate')?.value!,
+        endDate: this.searchForm.get('endDate')?.value!,
         guestNumber: guestNumber,
       },
       injector:this.injector
