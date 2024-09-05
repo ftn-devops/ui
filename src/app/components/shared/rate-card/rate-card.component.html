@@ -1,5 +1,10 @@
 <mat-card>
   <mat-card-content class="card">
+    @if(rate.isForAccommodation){
+      <mat-icon>home</mat-icon>
+    }@else {
+      <mat-icon>person</mat-icon>
+    }
     <div class="info">
       <span>Korisnik:</span>
       <h2>{{ rate.reviewerUsername }}</h2>
@@ -13,7 +18,7 @@
         <app-star-rating [rating]="rate.grade"></app-star-rating>
     </div>
     <div class="buttons">
-        <button mat-raised-button style="color:red" >
+        <button mat-raised-button style="color:red" (click)="deleteRate()">
             Obriši ocenu
             <mat-icon>delete</mat-icon>
         </button>
