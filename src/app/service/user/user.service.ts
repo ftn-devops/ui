@@ -19,7 +19,11 @@ export class UserService {
 
 
   login(emai:string,password:string):Observable<User>{
-    return this.http.get<User>(this.url+"58790e5a-c3ee-4a03-b1b4-8438ee368928");
+    return this.http.get<User>(this.url+"/login?username="+emai+"&password="+password);
+  }
+
+  register(user:User):Observable<User>{
+    return this.http.post<User>(this.url+"/register",user);
   }
 
   setLoggedUser(user:User|undefined){

@@ -21,8 +21,8 @@ export interface User {
 }
 
 export enum UserRole {
-  GUEST='GUEST',
-  HOST='HOST',
+  HOST=0,
+  GUEST=1,
 }
 
 export enum NotificationType {
