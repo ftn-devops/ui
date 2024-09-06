@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class StarRatingComponent {
 
-  @Input('rating') rating: number = 3;
+  @Input('rating') rating: number = 0;
   @Input('starCount') starCount: number = 5;
   @Input('color')  color: string = 'accent';
   @Output()  ratingUpdated = new EventEmitter();
@@ -32,7 +32,6 @@ export class StarRatingComponent {
   }
   onClick(rating:number) {
     console.log(rating)
-    this.toasterService.success('You rated ' + rating + ' / ' + this.starCount, '');
     this.ratingUpdated.emit(rating);
     return false;
   }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Reservation, ReservationStatus } from '../../../model/reservation';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -9,6 +9,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { ReservationService } from '../../../service/reservation/reservation.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { GiveRateComponent } from '../give-rate/give-rate.component';
+import { Accommondation } from '../../../model/accommondation';
+import { UserService } from '../../../service/user/user.service';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-reservation-card',
@@ -29,11 +34,19 @@ export class ReservationCardComponent {
   reservationsStatuses = ReservationStatus;
   @Input() reservation!: Reservation;
   @Output() actionTriger: EventEmitter<any> = new EventEmitter<any>(); 
+
+  private userService = inject(UserService);
+  private user : User | undefined;
   
   constructor(
     private reservationService: ReservationService,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    public dialog: MatDialog,
+  ) {
+    this.userService.loggedUser$.subscribe(data=>{
+      this.user = data;
+    })
+  }
 
   cancelReservation(){
     this.reservationService.cancelReservation(this.reservation).subscribe(
@@ -69,7 +82,20 @@ export class ReservationCardComponent {
 
   }
 
-  rateAccommodation(){
-
+  rateAccommodation(accommodation:Accommondation){
+    const dialogRef = this.dialog.open(GiveRateComponent, {
+      data: {
+        reviewerId: this.user?.id,
+        reviewerUsername: this.user?.name,
+        reviewedId: accommodation.id,
+        reviewedName: accommodation.name,
+        grade: 0,
+        date: new Date(),
+      
+        isForAccommodation: true
+      },
+    }).afterClosed().subscribe(()=>{
+      
+    });
   }
 }
