@@ -1,5 +1,9 @@
+declare const window: any;
+console.log("here");
+console.log(window.env);
+
 export const environments={
-    user_service_url : "http://localhost:8800/user/users/",
-    accommondation_service_url: "http://localhost:8800/accommodation/",
-    reservation_service_url: "http://localhost:8080/accommodation/reservations/"
+    user_service_url : window.env ? window.env.USER_SERVICE_URL : "http://localhost:8080/user",
+    accommondation_service_url: window.env ? window.env.ACCOMMODATION_SERVICE_URL : "http://localhost:8080/accommodation/",
+    reservation_service_url: window.env ? window.env.RESERVATION_SERVICE_URL : "http://localhost:8080/accommodatino/reservations/"
 }
