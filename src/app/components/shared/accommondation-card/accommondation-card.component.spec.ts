@@ -43,6 +43,7 @@ describe('AccommondationCardComponent', () => {
       avgRate: 0,
       availabilities: [],
       rates: [],
+      host: undefined
     };
     component.availability = {
       accommodationId: '123',
@@ -58,6 +59,7 @@ describe('AccommondationCardComponent', () => {
         avgRate: 0,
         availabilities: [],
         rates: [],
+        host: undefined
       },
       startDate: new Date(),
       endDate: new Date(),

@@ -61,7 +61,8 @@ describe('ReservationCardComponent', () => {
         images: ['image1.jpg', 'image2.jpg'],
         avgRate: 4.5,
         availabilities: [],
-        rates: []
+        rates: [],
+        host: undefined
       },
       startDate: new Date(),
       endDate: new Date(),

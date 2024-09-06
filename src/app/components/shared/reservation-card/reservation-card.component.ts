@@ -79,16 +79,31 @@ export class ReservationCardComponent {
   }
 
   rateHost(){
-
-  }
-
-  rateAccommodation(accommodation:Accommondation){
+    console.log(this.reservation);
     const dialogRef = this.dialog.open(GiveRateComponent, {
       data: {
         reviewerId: this.user?.id,
         reviewerUsername: this.user?.name,
-        reviewedId: accommodation.id,
-        reviewedName: accommodation.name,
+        reviewedId: this.reservation.accommodation.host!.id,
+        reviewedName: this.reservation.accommodation.host!.username,
+        grade: 0,
+        date: new Date(),
+      
+        isForAccommodation: false
+      },
+    }).afterClosed().subscribe(()=>{
+      
+    });
+
+  }
+
+  rateAccommodation(){
+    const dialogRef = this.dialog.open(GiveRateComponent, {
+      data: {
+        reviewerId: this.user!.id,
+        reviewerUsername: this.user!.name,
+        reviewedId: this.reservation.accommodation.id,
+        reviewedName: this.reservation.accommodation.name,
         grade: 0,
         date: new Date(),
       

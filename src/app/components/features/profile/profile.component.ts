@@ -55,6 +55,7 @@ export class ProfileComponent implements OnInit {
 
     this.userService.loggedUser$.subscribe((data) => {
       this.user = data!;
+      this.user.notifications = [];
       this.registrationForm.get('email')?.setValue(data?.email);
       this.registrationForm.get('firstName')?.setValue(data?.name);
       this.registrationForm.get('lastName')?.setValue(data?.lastName);
