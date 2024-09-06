@@ -12,7 +12,7 @@ export class UserService {
   private loggedUser = new BehaviorSubject<User|undefined>(undefined);
   loggedUser$ = this.loggedUser.asObservable();
   
-  url: string = `${environments.user_service_url}`;
+  url: string = `${environments.user_service_url}/users`;
 
 
   constructor(private http: HttpClient) { }

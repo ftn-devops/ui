@@ -15,19 +15,19 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
   sendReservation(reservation:Reservation):Observable<boolean>{
-    return this.http.post<boolean>(this.url+"addReservation",reservation);
+    return this.http.post<boolean>(this.url+"/addReservation",reservation);
   }
   
   confirmReservation(reservation:Reservation):Observable<boolean>{
-    return this.http.post<boolean>(this.url+"confirmReservation",reservation);
+    return this.http.post<boolean>(this.url+"/confirmReservation",reservation);
   }
 
   cancelReservation(reservation:Reservation):Observable<boolean>{
-    return this.http.post<boolean>(this.url+"cancelReservation",reservation);
+    return this.http.post<boolean>(this.url+"/cancelReservation",reservation);
   }
 
   getReservations(userId:string):Observable<Reservation[]>{
-    return this.http.get<Reservation[]>(this.url+"allReservations");
+    return this.http.get<Reservation[]>(this.url+"/allReservations");
   }
 
 }

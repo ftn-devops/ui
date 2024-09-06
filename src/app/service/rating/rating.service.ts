@@ -10,35 +10,34 @@ import { Rate } from '../../model/rate';
 export class RatingService {
 
 
-  userServiceUrl: string = `${environments.user_service_url}`;
+  userServiceUrl: string = `${environments.user_service_url}/grades`;
 
-  accommodationServiceUrl : string = `${environments.accommondation_service_url}grades/`;
+  accommodationServiceUrl : string = `${environments.accommondation_service_url}/grades`;
 
   constructor(private http: HttpClient) { }
 
 
   getRatings(userId:string, isForAccommodations:boolean):Observable<Rate[]>{
     if(isForAccommodations){
-      return this.http.get<Rate[]>(this.accommodationServiceUrl+"allAccommodationGrades");
+      return this.http.get<Rate[]>(this.accommodationServiceUrl+"/allAccommodationGrades");
     }
-    return this.http.get<Rate[]>(this.userServiceUrl+"allUserGrades");
+    return this.http.get<Rate[]>(this.userServiceUrl);
   }
 
   addRate(rate:Rate):Observable<boolean>{
     if(rate.isForAccommodation){
-      return this.http.post<boolean>(this.accommodationServiceUrl+"addAccommodationGrade",rate);
+      return this.http.post<boolean>(this.accommodationServiceUrl+"/addAccommodationGrade",rate);
 
     }
-    //TODO: change to user service 
-    return this.http.post<boolean>(this.userServiceUrl+"addUserGrade",rate);
+    return this.http.post<boolean>(this.userServiceUrl,rate);
   }
 
   deleteRate(rate:Rate){
     
     if(rate.isForAccommodation){
-      return this.http.post<boolean>(this.accommodationServiceUrl+"deleteAccommodationGrade",rate);
+      return this.http.post<boolean>(this.accommodationServiceUrl+"/deleteAccommodationGrade",rate);
     }else{
-      return this.http.post<boolean>(this.userServiceUrl+"deleteUserGrade",rate);
+      return this.http.delete<boolean>(this.userServiceUrl,{body: rate});
     }
     
   }

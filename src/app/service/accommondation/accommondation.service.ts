@@ -10,7 +10,7 @@ import { Availability } from '../../model/availability';
 })
 export class AccommondationService {
 
-  url: string = `${environments.accommondation_service_url}/acc/`;
+  url: string = `${environments.accommondation_service_url}/acc`;
 
 
   constructor(private http: HttpClient) { }
@@ -24,21 +24,21 @@ export class AccommondationService {
       guestNumber : guestNumber
     };
 
-    return this.http.post<Availability[]>(this.url+"searchAccommodations",searchObject);
+    return this.http.post<Availability[]>(this.url+"/searchAccommodations",searchObject);
   }
 
   getAccomondations(userId:string):Observable<Accommondation[]>{
-    return this.http.get<Accommondation[]>(this.url+"allAccommodations");  
+    return this.http.get<Accommondation[]>(this.url+"/allAccommodations");  
     
     // return this.http.get<Accommondation[]>("https://run.mocky.io/v3/55b4878e-a66a-4dc9-90b3-d7a46256590d");  
   }
 
   addNewAccomodation(accommodation:Accommondation):Observable<any>{
-    return this.http.post<Accommondation[]>(this.url+"addAccommodation",accommodation);  
+    return this.http.post<Accommondation[]>(this.url+"/addAccommodation",accommodation);  
     // return this.http.post<any>(this.url+"f2fe0e1e-6077-41d7-9e78-0719bd207b00",accommodation);  
   }
 
   addNewAvailability(availability:Availability):Observable<any>{
-    return this.http.post<any>(this.url+"addAvailability",availability);  
+    return this.http.post<any>(this.url+"/addAvailability",availability);  
   }
 }

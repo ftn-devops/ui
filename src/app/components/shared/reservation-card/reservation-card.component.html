@@ -1,12 +1,11 @@
 <mat-card>
   <mat-card-content class="card">
     <div class="info">
-        <span>Korisnik:</span>
-        <h2>{{reservation.user.username}}</h2>
-        <span>Broj otkazivanja: 4</span>
+      <span>Korisnik:</span>
+      <h2>{{ reservation.user.username }}</h2>
     </div>
     <div class="info">
-        <span>Apartman:</span>
+      <span>Apartman:</span>
       <h2>{{ reservation.accommodation.name }}</h2>
       <mat-form-field>
         <mat-label>Enter a date range</mat-label>
@@ -35,36 +34,40 @@
       <h3>${{ reservation.price }}</h3>
     </div>
     <div class="buttons">
-        <button mat-flat-button class="status {{ reservation.reservationStatus }}">
-          {{ reservation.reservationStatus }}
-        </button>
-        @if (reservation.reservationStatus === reservationsStatuses.CONFIRMED){
-            <button mat-raised-button (click)="cancelReservation()">
-                <mat-icon style="color:red">cancel</mat-icon>
-                Otkazi rezervaciju
-            </button>
-        }
-        @if(reservation.reservationStatus === reservationsStatuses.PENDING ) {
-            <button mat-raised-button (click)="cancelReservation()">
-                <mat-icon style="color:red">cancel</mat-icon>
-                Otkazi rezervaciju
-            </button>
-            <button mat-raised-button (click)="confirmReservation()">
-                <mat-icon style="color:green">check</mat-icon>
-                Potvrdi rezervaciju
-            </button>
-            
-        }
-        @if (reservation.reservationStatus === reservationsStatuses.FINISHED) {
-            <button mat-raised-button (click)="rateHost()">
-                <mat-icon>star</mat-icon>
-                Oceni domacina
-            </button>
-            <button mat-raised-button (click)="rateAccommodation(reservation.accommodation)">
-                <mat-icon>star</mat-icon>
-                Oceni apartman
-            </button>
-        }
+      <button
+        mat-flat-button
+        class="status {{ reservation.reservationStatus }}"
+      >
+        {{ reservation.reservationStatus }}
+      </button>
+      @if (reservation.reservationStatus === reservationsStatuses.CONFIRMED){
+      <button mat-raised-button (click)="cancelReservation()">
+        <mat-icon style="color: red">cancel</mat-icon>
+        Otkazi rezervaciju
+      </button>
+      } @if(reservation.reservationStatus === reservationsStatuses.PENDING ) {
+      <button mat-raised-button (click)="cancelReservation()">
+        <mat-icon style="color: red">cancel</mat-icon>
+        Otkazi rezervaciju
+      </button>
+      <button mat-raised-button (click)="confirmReservation()">
+        <mat-icon style="color: green">check</mat-icon>
+        Potvrdi rezervaciju
+      </button>
+
+      } @if (reservation.reservationStatus === reservationsStatuses.FINISHED) {
+      <button mat-raised-button (click)="rateHost()">
+        <mat-icon>star</mat-icon>
+        Oceni domacina
+      </button>
+      <button
+        mat-raised-button
+        (click)="rateAccommodation()"
+      >
+        <mat-icon>star</mat-icon>
+        Oceni apartman
+      </button>
+      }
     </div>
   </mat-card-content>
 </mat-card>

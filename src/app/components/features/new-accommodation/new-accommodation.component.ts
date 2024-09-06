@@ -71,7 +71,8 @@ export class NewAccommodationComponent {
         images: [],
         avgRate: 0,
         availabilities: [],
-        rates: []
+        rates: [],
+        host: this.user
       }
 
       this.accommodationService.addNewAccomodation(newAccommodation).subscribe(
