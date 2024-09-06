@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../service/user/user.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { User, UserRole } from '../../../model/user';
 
 @Component({
   selector: 'app-registration',
@@ -39,7 +40,26 @@ export class RegistrationComponent {
   }
 
   onSubmit(){
-      console.log(this.registrationForm.value)
+    console.log(this.registrationForm.value);
+    let user: User = {
+      id: "0",
+      name: this.registrationForm.value.firstName,
+      lastName: this.registrationForm.value.lastName,
+      username: this.registrationForm.value.email,
+      password: this.registrationForm.value.password,
+      email: this.registrationForm.value.email,
+      role: UserRole.GUEST,
+      avgRate: 0,
+      reservations: [],
+      accommondations: [],
+      notifications: [],
+      rates: []
+    };
+
+    this.userService.register(user).subscribe(data=>{
+          console.log(data);
+          this.router.navigateByUrl("/search");
+      });
   }
   
 
