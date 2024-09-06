@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>
+  Rezervacija za : {{ data.availability.accommodation.name }}
+</h2>
+<mat-dialog-content>
+  <h4>Potvrdite rezervaciju</h4>
+  <app-accommondation-card
+    [availability]="data.availability"
+    [isForAvailability]="true"
+  ></app-accommondation-card>
+  <mat-form-field>
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [disabled]="true">
+      <input matStartDate placeholder="Start date" [value]="data.startDate" />
+      <input matEndDate placeholder="End date" [value]="data.endDate" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <mat-form-field >
+    <mat-label>Broj osoba</mat-label>
+    <input matInput [disabled]="true" [value]="data.guestNumber" readonly />
+  </mat-form-field>
+
+  <div>
+    <h2>Ukupna cena</h2>
+    <h1>${{ totalPrice }}</h1>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button (click)="onNoClick()">Otkaži</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="sendReservationRequest()"
+    >
+      Pošalji zahtev za rezervaciju
+    </button>
+</mat-dialog-actions>

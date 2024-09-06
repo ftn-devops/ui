@@ -1,0 +1,25 @@
+.search-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    .search-inputs{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+    }
+}
+
+.search-results{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    .card{
+        max-width: 250px;
+    }
+
+}

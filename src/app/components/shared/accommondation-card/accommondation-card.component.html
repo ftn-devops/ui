@@ -1,0 +1,48 @@
+<mat-card class="card">
+    <mat-card-content>
+
+        <div class="image">
+    
+        </div>
+        <div class="info">
+            @if (isForAvailability) {
+                <h3>{{availability.accommodation.name}}</h3>
+                <span>{{availability.accommodation.address}}</span>
+                
+                <span>{{availability.accommodation.description}}</span>
+                <span>min {{availability.accommodation.minGuestNumber}} <mat-icon>person</mat-icon></span>
+                <span>max {{availability.accommodation.maxGuestNumber}} <mat-icon>person</mat-icon></span>
+        
+                <span>{{availability.accommodation.avgRate}} <mat-icon>star</mat-icon></span>
+            }
+            @else {
+                <h3>{{accommondation.name}}</h3>
+                <span>{{accommondation.address}}</span>
+                
+                <span>{{accommondation.description}}</span>
+                <span>min {{accommondation.minGuestNumber}} <mat-icon>person</mat-icon></span>
+                <span>max {{accommondation.maxGuestNumber}} <mat-icon>person</mat-icon></span>
+        
+                <span>{{accommondation.avgRate}} <mat-icon>star</mat-icon></span>     
+            }
+        </div>
+        @if(isForAvailability){
+            <div class="price">
+                <span>${{availability.price}}</span>
+                @if (availability.isPriceForPerson) {<span>po osobi</span>}
+                @else {<span>po danu</span>}
+            </div>
+        }
+        @if (showActions) {
+            <mat-card-actions align="end">
+                @if (isForAvailability) {
+        
+                    <button mat-raised-button (click)="reserve()" color="primary"> Rezervisi </button>
+                }
+                @else{
+                    <button mat-raised-button (click)="newAvailability()" color="primary"> Definiši dostupnost <mat-icon>schedule</mat-icon> </button>
+                }
+            </mat-card-actions>
+        }
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,42 @@
+name: Deployment
+
+on:
+  push:
+    tags: [ '*.*.*' ]
+    branches:
+      - develop
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build, test and release to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: ng build
+
+      - name: Test app
+        run: ng test --browsers=ChromeHeadless --watch=false
+
+      - name: Kaniko build
+        uses: aevea/action-kaniko@master
+        with:
+          image: ftndevops123/ui
+          tag: ${{ github.ref_name }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          cache: true
+          cache_registry: aevea/cache

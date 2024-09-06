@@ -1,0 +1,35 @@
+mat-card{
+    margin: 10px;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+
+    .buttons{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .PENDING{
+        color: orange;
+    }
+
+    .CONFIRMED{
+        color: green;
+    }
+
+    .DECLINED{
+        color: red;
+    }
+
+    .CANCELED{
+        color: grey;
+    }
+
+    .FINISHED{
+        color: darkolivegreen;
+    }
+
+}

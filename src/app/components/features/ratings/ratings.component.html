@@ -1,0 +1,15 @@
+<div>
+    <h2>Ocene</h2>
+    Korisnicke ocene
+    <mat-slide-toggle
+          [checked]="isForAccommodations"
+          (change)="isForAccommodations=!isForAccommodations; updateRatings()"
+        >
+        Ocene za apartmane
+        </mat-slide-toggle>
+    <div class="ratings">
+        @for(rate of ratings; track $index){
+            <app-rate-card [rate]="rate" class="card" [isForAccommodation]="isForAccommodations" (deletedGrade)="updateRatings()"></app-rate-card>
+        }
+    </div>
+</div>
